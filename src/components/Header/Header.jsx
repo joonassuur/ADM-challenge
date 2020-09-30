@@ -13,8 +13,8 @@ function Header({setOpen, isOpen}) {
       className={classes.header}
     >
       <Toolbar>
-        <IconButton color="inherit" aria-label="open drawer">
-          <MenuIcon onClick={() => setOpen()} />
+        <IconButton onClick={() => setOpen()} color="inherit" aria-label="open drawer">
+          <MenuIcon />
         </IconButton>
         <Typography variant="h6" noWrap>
           Persistent drawer
