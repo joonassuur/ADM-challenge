@@ -4,12 +4,12 @@ import { getIsSidebarOpen } from "../../redux/Selectors";
 
 import { isOpen } from "../../redux/AppActions";
 
-import { AppBar, Toolbar, IconButton, Typography, TextField } from "@material-ui/core";
+import { AppBar, Toolbar, IconButton, Typography, TextField, Button } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 
 import useStyles from "./Header.styles";
 
-function Header({ searchFilter, setSearchFilter }) {
+function Header({ searchFilter, setSearchFilter, setShouldFetch }) {
   const isSidebarOpen = useSelector(getIsSidebarOpen);
   const classes = useStyles(isSidebarOpen);
   const dispatch = useDispatch();
@@ -36,6 +36,7 @@ function Header({ searchFilter, setSearchFilter }) {
           label="Outlined"
           variant="outlined"
         />
+        <Button onClick={setShouldFetch} variant="contained">Load</Button>
       </Toolbar>
     </AppBar>
   );

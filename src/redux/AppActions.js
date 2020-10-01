@@ -4,3 +4,16 @@ export const isOpen = (payload) => {
     payload
   };
 };
+export const setShipmentData = (payload) => {
+  return {
+    type: "SET_SHIPMENT_DATA", 
+    payload
+  };
+};
+export const setSelectedCompany = (payload) => {
+    console.log(payload)
+  return {
+    type: "SET_SELECTED_COMPANY", 
+    payload
+  };
+};
