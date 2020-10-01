@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getIsSidebarOpen } from "../../redux/Selectors";
 
 import { Main, Header, Sidebar, ShipmentsAPI } from "../Index";
 import useStyles from "./Container.styles";
 
 function Container() {
   const classes = useStyles();
-  const [isSidebarOpen, setSidebarOpen] = useState(true);
+  const isSidebarOpen = useSelector(getIsSidebarOpen);
+
   const [shipmentData, setShipmentData] = useState(undefined);
   const [searchFilter, setSearchFilter] = useState(undefined);
 
@@ -22,16 +25,12 @@ function Container() {
   return (
     <div className={classes.container}>
       <Header
-        setSidebarOpen={() => setSidebarOpen(!isSidebarOpen)}
-        isSidebarOpen={isSidebarOpen}
         searchFilter={searchFilter}
         setSearchFilter={(e) => setSearchFilter(e)}
       />
       <Main isSidebarOpen={isSidebarOpen} shipmentData={shipmentData} />
       <Sidebar
         shipmentData={filteredResults?.length > 0 ? filteredResults : shipmentData}
-        isSidebarOpen={isSidebarOpen}
-        setSidebarOpen={() => setSidebarOpen(!isSidebarOpen)}
       />
     </div>
   );

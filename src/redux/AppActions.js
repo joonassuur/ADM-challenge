@@ -1,5 +1,6 @@
-export const isOpen = () => {
+export const isOpen = (payload) => {
   return {
-    type: "IS_OPEN",
+    type: "IS_OPEN", 
+    payload
   };
 };
