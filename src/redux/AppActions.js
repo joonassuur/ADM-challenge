@@ -11,7 +11,6 @@ export const setShipmentData = (payload) => {
   };
 };
 export const setSelectedCompany = (payload) => {
-    console.log(payload)
   return {
     type: "SET_SELECTED_COMPANY", 
     payload
