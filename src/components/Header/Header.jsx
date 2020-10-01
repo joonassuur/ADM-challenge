@@ -1,24 +1,28 @@
-import React from "react";
-import { AppBar, Toolbar, IconButton, Typography } from "@material-ui/core";
+import React, { useState, useEffect } from "react";
+import { AppBar, Toolbar, IconButton, Typography, TextField } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 
 import useStyles from "./Header.styles";
 
-function Header({setOpen, isOpen}) {
-  const classes = useStyles(isOpen);
-  
+function Header({ setSidebarOpen, isSidebarOpen, searchFilter, setSearchFilter}) {
+  const classes = useStyles(isSidebarOpen);
+
   return (
-    <AppBar 
-      position="fixed"
-      className={classes.header}
-    >
+    <AppBar position="fixed" className={classes.header}>
       <Toolbar>
-        <IconButton onClick={() => setOpen()} color="inherit" aria-label="open drawer">
+        <IconButton onClick={() => setSidebarOpen()} color="inherit" aria-label="open drawer">
           <MenuIcon />
         </IconButton>
         <Typography variant="h6" noWrap>
-          Persistent drawer
+          Cargo planner
         </Typography>
+        <TextField
+          value={searchFilter || ""}
+          onChange={(e) => setSearchFilter(e.target.value)}
+          className={classes.searchBar}
+          label="Outlined"
+          variant="outlined"
+        />
       </Toolbar>
     </AppBar>
   );
