@@ -26,7 +26,7 @@ function Container() {
         searchFilter={searchFilter}
         setSearchFilter={(e) => setSearchFilter(e)}
       />
-      <Main isSidebarOpen={isSidebarOpen} shipmentData={filteredResults} />
+      <Main isSidebarOpen={isSidebarOpen} shipmentData={shipmentData} />
       <Sidebar
         shipmentData={filteredResults?.length > 0 ? filteredResults : shipmentData}
         isSidebarOpen={isSidebarOpen}
