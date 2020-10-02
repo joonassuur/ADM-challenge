@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getShipmentData, getShouldFetch } from "../../redux/Selectors";
 import { setShipmentData, setShouldFetch } from "../../redux/AppActions";
+import { CircularProgress } from "@material-ui/core";
 
 import { Main, Header, Sidebar, ShipmentsAPI } from "../Index";
 import useStyles from "./App.styles";
@@ -21,6 +22,15 @@ function App() {
       if (shouldFetch) {
         // fetch the data from shipments.json
         const { data } = await ShipmentsAPI.getShipments();
+        data.sort((a, b) => {
+          if (a.name < b.name) {
+            return -1;
+          }
+          if (a.name > b.name) {
+            return 1;
+          }
+          return 0;
+        });
         if (data) {
           dispatch(setShouldFetch(false));
           // once the data is fetched, dispatch it to redux
@@ -30,7 +40,7 @@ function App() {
     })();
   }, [dispatch, shipmentData, shouldFetch]);
 
-  return (
+  return shipmentData ? (
     <Switch>
       <Route>
         <div className={classes.app}>
@@ -46,6 +56,8 @@ function App() {
         </div>
       </Route>
     </Switch>
+  ) : (
+    <CircularProgress />
   );
 }
 
