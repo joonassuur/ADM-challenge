@@ -4,7 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { TextField } from "@material-ui/core";
 import { getIsSidebarOpen, getShipmentData, getSelectedCompany } from "../../redux/Selectors";
-import { setSelectedCompany } from "../../redux/AppActions";
+import { setSelectedCompany, modifyBoxes } from "../../redux/AppActions";
 
 import useStyles from "./Main.styles";
 
@@ -17,15 +17,18 @@ function Main() {
   const shipmentData = useSelector(getShipmentData);
   const isSidebarOpen = useSelector(getIsSidebarOpen);
   const selectedCompany = useSelector(getSelectedCompany);
+
   const [requiredBays, setRequiredBays] = useState(undefined);
+  const [isDataInit, setDataInit] = useState(false);
 
   const classes = useStyles(isSidebarOpen);
 
   useEffect(() => {
-    if (shipmentData) {
+    if (shipmentData && !isDataInit) {
       shipmentData.map(
         (company) => company.name === activeRoute && dispatch(setSelectedCompany(company)),
       );
+      setDataInit(true);
     }
     if (selectedCompany) {
       const add = (a, b) => a + b;
@@ -34,7 +37,7 @@ function Main() {
 
       setRequiredBays((Math.ceil(sum / 10) * 10) / 10);
     }
-  }, [shipmentData, activeRoute, dispatch, selectedCompany, requiredBays]);
+  }, [shipmentData, activeRoute, dispatch, selectedCompany, requiredBays, isDataInit]);
 
   return (
     <Switch>
@@ -45,6 +48,7 @@ function Main() {
           <p>{`Number of required cargo bays: ${requiredBays}`}</p>
           <p>Cargo boxes</p>
           <TextField
+            onChange={(e) => dispatch(modifyBoxes(e.target.value))}
             className={classes.input}
             value={selectedCompany?.boxes || ""}
           />

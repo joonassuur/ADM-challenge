@@ -10,6 +10,12 @@ export const setShipmentData = (payload) => {
     payload
   };
 };
+export const modifyBoxes = (payload) => {
+  return {
+    type: "MODIFY_BOXES", 
+    payload
+  };
+};
 export const setSelectedCompany = (payload) => {
   return {
     type: "SET_SELECTED_COMPANY", 

@@ -15,6 +15,12 @@ function AppReducer(state = INITIAL_STATE, action) {
         ...state,
         shipmentData: action.payload,
       };
+    case "MODIFY_BOXES":
+      let x = action.payload
+      return {
+        ...state,
+        selectedCompany: { ...state.selectedCompany, boxes: x },
+      };
     case "SET_SELECTED_COMPANY":
       return {
         ...state,
