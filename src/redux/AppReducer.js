@@ -16,10 +16,10 @@ function AppReducer(state = INITIAL_STATE, action) {
         shipmentData: action.payload,
       };
     case "MODIFY_BOXES":
-      let x = action.payload
+      const boxes = action.payload
       return {
         ...state,
-        selectedCompany: { ...state.selectedCompany, boxes: x },
+        selectedCompany: { ...state.selectedCompany, boxes },
       };
     case "SET_SELECTED_COMPANY":
       return {
