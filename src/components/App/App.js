@@ -13,6 +13,7 @@ function App() {
   const shipmentData = useSelector(getShipmentData);
   const shouldFetch = useSelector(getShouldFetch);
 
+  // handle search filtering
   const [searchFilter, setSearchFilter] = useState(undefined);
   const filteredResults = shipmentData?.filter((text) =>
     text?.name?.toLowerCase().includes(searchFilter),
@@ -21,9 +22,11 @@ function App() {
   useEffect(() => {
     (async () => {
       if (shouldFetch) {
+        // fetch the data from shipments.json
         const { data } = await ShipmentsAPI.getShipments();
         if (data) {
           dispatch(setShouldFetch(false));
+          // once the data is fetched, dispatch it to redux
           dispatch(setShipmentData(data));
         }
       }

@@ -26,6 +26,7 @@ function Sidebar({ shipmentData }) {
       <div>
         <IconButton
           onClick={() => {
+            // handle whether sidebar is open or closed
             dispatch(setIsOpen(!isSidebarOpen));
           }}
         >
@@ -34,6 +35,7 @@ function Sidebar({ shipmentData }) {
       </div>
       <Divider />
       <List>
+        {/* displays the list of companies on the sidebar */}
         {shipmentData.map(({ id, name }) => (
           <Link key={id} to={`/${name}`}>
             <ListItem button>

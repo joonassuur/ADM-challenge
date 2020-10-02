@@ -16,20 +16,20 @@ import useStyles from "./Main.styles";
 function Main() {
   const location = useLocation();
   const dispatch = useDispatch();
-
   const activeRoute = location.pathname.substring(1);
+  
+  const [requiredBays, setRequiredBays] = useState(undefined);
 
   const shouldFetch = useSelector(getShouldFetch);
   const shipmentData = useSelector(getShipmentData);
   const isSidebarOpen = useSelector(getIsSidebarOpen);
   const selectedCompany = useSelector(getSelectedCompany);
-
-  const [requiredBays, setRequiredBays] = useState(undefined);
-
+  
   const classes = useStyles(isSidebarOpen);
 
   useEffect(() => {
     if (shipmentData) {
+      // set currently active company on redux depending on the selected route
       shipmentData.map(
         (company) => company.name === activeRoute && dispatch(setSelectedCompany(company)),
       );
@@ -37,6 +37,7 @@ function Main() {
   }, [activeRoute, dispatch, shipmentData, shouldFetch]);
 
   useEffect(() => {
+    // calculate required cargo bays
     if (selectedCompany) {
       const add = (a, b) => a + b;
       const boxes = selectedCompany?.boxes?.split(",").map((e) => +e);
@@ -53,6 +54,7 @@ function Main() {
       <p>{`Number of required cargo bays: ${requiredBays}`}</p>
       <p>Cargo boxes</p>
       <TextField
+        // dispatch the modified active company to redux
         onChange={(e) => dispatch(modifyBoxes(e.target.value))}
         className={classes.input}
         value={selectedCompany?.boxes || ""}
