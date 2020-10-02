@@ -30,7 +30,7 @@ function Main() {
   useEffect(() => {
     if (shipmentData) {
       // set currently active company on redux depending on the selected route
-      shipmentData.map(
+      shipmentData.forEach(
         (company) => company.name === activeRoute && dispatch(setSelectedCompany(company)),
       );
     }

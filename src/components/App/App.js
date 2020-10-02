@@ -15,9 +15,6 @@ function App() {
 
   // handle search filtering
   const [searchFilter, setSearchFilter] = useState(undefined);
-  const filteredResults = shipmentData?.filter((text) =>
-    text?.name?.toLowerCase().includes(searchFilter),
-  );
 
   useEffect(() => {
     (async () => {
@@ -39,7 +36,13 @@ function App() {
         <div className={classes.app}>
           <Header searchFilter={searchFilter} setSearchFilter={(e) => setSearchFilter(e)} />
           <Main shipmentData={shipmentData} />
-          <Sidebar shipmentData={filteredResults?.length > 0 ? filteredResults : shipmentData} />
+          <Sidebar
+            shipmentData={
+              searchFilter
+                ? shipmentData?.filter((text) => text?.name?.toLowerCase().includes(searchFilter))
+                : shipmentData
+            }
+          />
         </div>
       </Route>
     </Switch>
