@@ -22,10 +22,9 @@ export const modifyBoxes = (payload) => {
     payload
   };
 };
-export const saveShipmentData = (payload) => {
+export const saveShipmentData = () => {
   return {
     type: "SAVE_SHIPMENT_DATA", 
-    payload
   };
 };
 export const setSelectedCompany = (payload) => {
