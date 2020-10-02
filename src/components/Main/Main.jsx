@@ -29,7 +29,7 @@ function Main() {
   const classes = useStyles(isSidebarOpen);
 
   useEffect(() => {
-    if (shipmentData && shouldFetch) {
+    if (shipmentData) {
       shipmentData.map(
         (company) => company.name === activeRoute && dispatch(setSelectedCompany(company)),
       );

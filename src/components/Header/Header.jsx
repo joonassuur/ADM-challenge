@@ -36,8 +36,12 @@ function Header({ searchFilter, setSearchFilter }) {
           label="Outlined"
           variant="outlined"
         />
-        <Button onClick={()=>dispatch(saveShipmentData("save"))} variant="contained">Save</Button>
-        <Button onClick={()=>dispatch(setShouldFetch(true))} variant="contained">Load</Button>
+        <Button onClick={() => dispatch(saveShipmentData("save"))} variant="contained">
+          Save
+        </Button>
+        <Button onClick={() => dispatch(setShouldFetch(true))} variant="contained">
+          Load
+        </Button>
       </Toolbar>
     </AppBar>
   );

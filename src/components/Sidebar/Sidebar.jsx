@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getIsSidebarOpen } from "../../redux/Selectors";
-import { setIsOpen, setShouldFetch } from "../../redux/AppActions";
+import { setIsOpen } from "../../redux/AppActions";
 
 import { Drawer, Divider, List, ListItem, IconButton, ListItemText } from "@material-ui/core";
 import { Link } from "react-router-dom";
@@ -35,13 +35,7 @@ function Sidebar({ shipmentData }) {
       <Divider />
       <List>
         {shipmentData.map(({ id, name }) => (
-          <Link
-            key={id}
-            to={`/${name}`}
-            onClick={() => {
-              dispatch(setShouldFetch(true));
-            }}
-          >
+          <Link key={id} to={`/${name}`}>
             <ListItem button>
               <ListItemText primary={name} />
             </ListItem>

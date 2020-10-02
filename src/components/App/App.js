@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Switch, Route, useLocation } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getShipmentData, getShouldFetch } from "../../redux/Selectors";
 import { setShipmentData, setShouldFetch } from "../../redux/AppActions";
@@ -13,8 +13,6 @@ function App() {
   const shipmentData = useSelector(getShipmentData);
   const shouldFetch = useSelector(getShouldFetch);
 
-  const location = useLocation();
-
   const [searchFilter, setSearchFilter] = useState(undefined);
   const filteredResults = shipmentData?.filter((text) =>
     text?.name?.toLowerCase().includes(searchFilter),
@@ -24,22 +22,18 @@ function App() {
     (async () => {
       if (shouldFetch) {
         const { data } = await ShipmentsAPI.getShipments();
-        if (data && !shipmentData) dispatch(setShipmentData(data));
-
-        dispatch(setShouldFetch(false));
+        if (data) {
+          dispatch(setShouldFetch(false));
+          dispatch(setShipmentData(data));
+        }
       }
     })();
   }, [dispatch, shipmentData, shouldFetch]);
 
-  useEffect(() => {
-    //make sure the data gets fetched when browser back/forward buttons are pressed
-    dispatch(setShouldFetch(true));
-  }, [dispatch, location]);
-
   return (
     <Switch>
       <Route>
-        <div className={classes.container}>
+        <div className={classes.app}>
           <Header searchFilter={searchFilter} setSearchFilter={(e) => setSearchFilter(e)} />
           <Main shipmentData={shipmentData} />
           <Sidebar shipmentData={filteredResults?.length > 0 ? filteredResults : shipmentData} />
