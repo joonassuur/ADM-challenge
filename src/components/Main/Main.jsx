@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Switch, Route } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 import { TextField } from "@material-ui/core";
@@ -48,21 +47,17 @@ function Main() {
   }, [selectedCompany]);
 
   return (
-    <Switch>
-      <Route path={location.pathname}>
-        <div className={classes.main}>
-          <p>{selectedCompany?.name}</p>
-          <a href={`mailto:${selectedCompany?.email}`}>{selectedCompany?.email}</a>
-          <p>{`Number of required cargo bays: ${requiredBays}`}</p>
-          <p>Cargo boxes</p>
-          <TextField
-            onChange={(e) => dispatch(modifyBoxes(e.target.value))}
-            className={classes.input}
-            value={selectedCompany?.boxes || ""}
-          />
-        </div>
-      </Route>
-    </Switch>
+    <div className={classes.main}>
+      <p>{selectedCompany?.name}</p>
+      <a href={`mailto:${selectedCompany?.email}`}>{selectedCompany?.email}</a>
+      <p>{`Number of required cargo bays: ${requiredBays}`}</p>
+      <p>Cargo boxes</p>
+      <TextField
+        onChange={(e) => dispatch(modifyBoxes(e.target.value))}
+        className={classes.input}
+        value={selectedCompany?.boxes || ""}
+      />
+    </div>
   );
 }
 export default Main;

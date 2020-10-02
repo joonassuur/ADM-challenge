@@ -35,7 +35,13 @@ function Sidebar({ shipmentData }) {
       <Divider />
       <List>
         {shipmentData.map(({ id, name }) => (
-          <Link key={id} to={`/${name}`} onClick={()=>dispatch(setShouldFetch(true))}>
+          <Link
+            key={id}
+            to={`/${name}`}
+            onClick={() => {
+              dispatch(setShouldFetch(true));
+            }}
+          >
             <ListItem button>
               <ListItemText primary={name} />
             </ListItem>
