@@ -22,6 +22,8 @@ function App() {
       if (shouldFetch) {
         // fetch the data from shipments.json
         const { data } = await ShipmentsAPI.getShipments();
+
+        // sort the list alphabetically
         data.sort((a, b) => {
           if (a.name < b.name) {
             return -1;
@@ -31,6 +33,7 @@ function App() {
           }
           return 0;
         });
+        
         if (data) {
           dispatch(setShouldFetch(false));
           // once the data is fetched, dispatch it to redux
