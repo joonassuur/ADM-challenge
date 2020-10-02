@@ -1,6 +1,12 @@
-export const isOpen = (payload) => {
+export const setIsOpen = (payload) => {
   return {
     type: "IS_OPEN", 
+    payload
+  };
+};
+export const setShouldFetch = (payload) => {
+  return {
+    type: "SET_SHOULD_FETCH", 
     payload
   };
 };

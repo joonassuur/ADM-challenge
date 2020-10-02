@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getIsSidebarOpen } from "../../redux/Selectors";
 
-import { isOpen } from "../../redux/AppActions";
+import { setIsOpen, setShouldFetch } from "../../redux/AppActions";
 
 import { AppBar, Toolbar, IconButton, Typography, TextField, Button } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 
 import useStyles from "./Header.styles";
 
-function Header({ searchFilter, setSearchFilter, setShouldFetch }) {
+function Header({ searchFilter, setSearchFilter }) {
   const isSidebarOpen = useSelector(getIsSidebarOpen);
   const classes = useStyles(isSidebarOpen);
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ function Header({ searchFilter, setSearchFilter, setShouldFetch }) {
       <Toolbar>
         <IconButton
           onClick={() => {
-            dispatch(isOpen(!isSidebarOpen));
+            dispatch(setIsOpen(!isSidebarOpen));
           }}
           color="inherit"
           aria-label="open drawer"
@@ -36,7 +36,7 @@ function Header({ searchFilter, setSearchFilter, setShouldFetch }) {
           label="Outlined"
           variant="outlined"
         />
-        <Button onClick={setShouldFetch} variant="contained">Load</Button>
+        <Button onClick={()=>dispatch(setShouldFetch(true))} variant="contained">Load</Button>
       </Toolbar>
     </AppBar>
   );

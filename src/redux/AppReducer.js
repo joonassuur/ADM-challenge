@@ -2,6 +2,7 @@ const INITIAL_STATE = {
   isSidebarOpen: true,
   shipmentData: undefined,
   selectedCompany: undefined,
+  shouldFetch: true,
 };
 function AppReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -14,6 +15,11 @@ function AppReducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         shipmentData: action.payload,
+      };
+    case "SET_SHOULD_FETCH":
+      return {
+        ...state,
+        shouldFetch: action.payload,
       };
     case "MODIFY_BOXES":
       const boxes = action.payload

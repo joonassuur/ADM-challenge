@@ -1,10 +1,15 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Switch, Route } from "react-router-dom";
-import { useLocation, withRouter } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import { TextField } from "@material-ui/core";
-import { getIsSidebarOpen, getShipmentData, getSelectedCompany } from "../../redux/Selectors";
+import {
+  getIsSidebarOpen,
+  getShipmentData,
+  getSelectedCompany,
+  getShouldFetch,
+} from "../../redux/Selectors";
 import { setSelectedCompany, modifyBoxes } from "../../redux/AppActions";
 
 import useStyles from "./Main.styles";
@@ -15,6 +20,7 @@ function Main() {
 
   const activeRoute = location.pathname.substring(1);
 
+  const shouldFetch = useSelector(getShouldFetch);
   const shipmentData = useSelector(getShipmentData);
   const isSidebarOpen = useSelector(getIsSidebarOpen);
   const selectedCompany = useSelector(getSelectedCompany);
@@ -22,7 +28,15 @@ function Main() {
   const [requiredBays, setRequiredBays] = useState(undefined);
 
   const classes = useStyles(isSidebarOpen);
-  
+
+  useEffect(() => {
+    if (shipmentData && shouldFetch) {
+      shipmentData.map(
+        (company) => company.name === activeRoute && dispatch(setSelectedCompany(company)),
+      );
+    }
+  }, [activeRoute, dispatch, shipmentData, shouldFetch]);
+
   useEffect(() => {
     if (selectedCompany) {
       const add = (a, b) => a + b;
@@ -33,14 +47,6 @@ function Main() {
     }
   }, [selectedCompany]);
 
-  useEffect(()=> {
-    if (shipmentData) {
-      shipmentData.map(
-        (company) => company.name === activeRoute && dispatch(setSelectedCompany(company)),
-      );
-    }
-  }, [activeRoute, dispatch, shipmentData])
-  
   return (
     <Switch>
       <Route path={location.pathname}>
@@ -59,4 +65,4 @@ function Main() {
     </Switch>
   );
 }
-export default withRouter(Main);
+export default Main;
