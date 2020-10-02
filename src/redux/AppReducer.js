@@ -1,36 +1,46 @@
+import _ from "lodash";
 const INITIAL_STATE = {
   isSidebarOpen: true,
   shipmentData: undefined,
   selectedCompany: undefined,
   shouldFetch: true,
 };
-function AppReducer(state = INITIAL_STATE, action) {
-  switch (action.type) {
-    case "IS_OPEN":
+function AppReducer(state = INITIAL_STATE, { payload, type }) {
+  switch (type) {
+    case "SET_IS_OPEN":
       return {
         ...state,
-        isSidebarOpen: action.payload,
+        isSidebarOpen: payload,
       };
     case "SET_SHIPMENT_DATA":
       return {
         ...state,
-        shipmentData: action.payload,
+        shipmentData: payload,
       };
     case "SET_SHOULD_FETCH":
       return {
         ...state,
-        shouldFetch: action.payload,
+        shouldFetch: payload,
       };
     case "MODIFY_BOXES":
-      const boxes = action.payload
+      const boxes = payload;
       return {
         ...state,
         selectedCompany: { ...state.selectedCompany, boxes },
       };
+    case "SAVE_SHIPMENT_DATA":
+      const shipmentData = _.clone(state.shipmentData);
+      const index = shipmentData.findIndex(({ id }) => id === state.selectedCompany.id);
+      shipmentData[index] = state.selectedCompany;
+
+      return {
+        ...state,
+        shipmentData,
+      };
     case "SET_SELECTED_COMPANY":
       return {
         ...state,
-        selectedCompany: action.payload,
+        selectedCompany: payload,
       };
     default:
       return state;

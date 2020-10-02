@@ -1,6 +1,6 @@
 export const setIsOpen = (payload) => {
   return {
-    type: "IS_OPEN", 
+    type: "SET_IS_OPEN", 
     payload
   };
 };
@@ -19,6 +19,12 @@ export const setShipmentData = (payload) => {
 export const modifyBoxes = (payload) => {
   return {
     type: "MODIFY_BOXES", 
+    payload
+  };
+};
+export const saveShipmentData = (payload) => {
+  return {
+    type: "SAVE_SHIPMENT_DATA", 
     payload
   };
 };

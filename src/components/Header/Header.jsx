@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getIsSidebarOpen } from "../../redux/Selectors";
 
-import { setIsOpen, setShouldFetch } from "../../redux/AppActions";
+import { setIsOpen, setShouldFetch, saveShipmentData } from "../../redux/AppActions";
 
 import { AppBar, Toolbar, IconButton, Typography, TextField, Button } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -36,6 +36,7 @@ function Header({ searchFilter, setSearchFilter }) {
           label="Outlined"
           variant="outlined"
         />
+        <Button onClick={()=>dispatch(saveShipmentData("save"))} variant="contained">Save</Button>
         <Button onClick={()=>dispatch(setShouldFetch(true))} variant="contained">Load</Button>
       </Toolbar>
     </AppBar>
