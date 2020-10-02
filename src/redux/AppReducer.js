@@ -1,10 +1,12 @@
 import _ from "lodash";
+
 const INITIAL_STATE = {
   isSidebarOpen: true,
   shipmentData: undefined,
   selectedCompany: undefined,
   shouldFetch: true,
 };
+
 function AppReducer(state = INITIAL_STATE, { payload, type }) {
   switch (type) {
     case "SET_IS_OPEN":

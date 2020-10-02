@@ -17,14 +17,14 @@ function Main() {
   const location = useLocation();
   const dispatch = useDispatch();
   const activeRoute = location.pathname.substring(1);
-  
+
   const [requiredBays, setRequiredBays] = useState(undefined);
 
   const shouldFetch = useSelector(getShouldFetch);
   const shipmentData = useSelector(getShipmentData);
   const isSidebarOpen = useSelector(getIsSidebarOpen);
   const selectedCompany = useSelector(getSelectedCompany);
-  
+
   const classes = useStyles(isSidebarOpen);
 
   useEffect(() => {
@@ -41,7 +41,9 @@ function Main() {
     if (selectedCompany) {
       const add = (a, b) => a + b;
       const boxes = selectedCompany?.boxes?.split(",").map((e) => +e);
-      const sum = boxes?.reduce(add);
+      let sum = boxes?.reduce(add);
+
+      if (sum < 0) sum = 0;
 
       setRequiredBays((Math.ceil(sum / 10) * 10) / 10);
     }
@@ -51,7 +53,7 @@ function Main() {
     <div className={classes.main}>
       <p>{selectedCompany?.name}</p>
       <a href={`mailto:${selectedCompany?.email}`}>{selectedCompany?.email}</a>
-      <p>{`Number of required cargo bays: ${requiredBays}`}</p>
+      <p>{`Number of required cargo bays: ${requiredBays || "0"}`}</p>
       <p>Cargo boxes</p>
       <TextField
         // dispatch the modified active company to redux

@@ -38,9 +38,11 @@ function Header({ searchFilter, setSearchFilter }) {
           label="Outlined"
           variant="outlined"
         />
+        {/* saves the changed values to redux (otherwise they reset when route is changed) */}
         <Button onClick={() => dispatch(saveShipmentData())} variant="contained">
           Save
         </Button>
+        {/* reload the initial data from shipments.json */}
         <Button onClick={() => dispatch(setShouldFetch(true))} variant="contained">
           Load
         </Button>
