@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
-import { TextField, CircularProgress } from "@material-ui/core";
+import { TextField, CircularProgress, Typography, Link } from "@material-ui/core";
 
 import {
   setSelectedCompany,
@@ -57,19 +57,22 @@ function Main() {
       <div className={classes.toolbar} />
       {!shouldFetch ? (
         <>
-          <h3>{selectedCompany?.name}</h3>
-          <a href={`mailto:${selectedCompany?.email}`}>{selectedCompany?.email}</a>
-          <p>
-            Number of required cargo bays:
-            <strong> {requiredBays || "0"} </strong>
-          </p>
-          <p>Cargo boxes</p>
-          <TextField
-            // dispatch the modified active company to redux
-            onChange={(e) => dispatch(modifyBoxes(e.target.value))}
-            className={classes.input}
-            value={selectedCompany?.boxes || ""}
-          />
+          <Typography variant="h4">{selectedCompany?.name}</Typography>
+          <Link variant="body1" href={`mailto:${selectedCompany?.email}`}>
+            {selectedCompany?.email}
+          </Link>
+          <div className={classes.details}>
+            <Typography gutterBottom variant="body1">
+              Number of required cargo bays: <strong> {requiredBays || "0"} </strong>
+            </Typography>
+            <Typography gutterBottom variant="body1">Cargo boxes</Typography>
+            <TextField
+              // dispatch the modified active company to redux
+              onChange={(e) => dispatch(modifyBoxes(e.target.value))}
+              className={classes.input}
+              value={selectedCompany?.boxes || ""}
+            />
+          </div>
         </>
       ) : (
         // if fetching data, display spinner
