@@ -46,7 +46,7 @@ function App() {
 
   return shipmentData ? (
     <Switch>
-      <Route>
+      <Route path="/ADM-challenge">
         <div className={classes.app}>
           <Header searchFilter={searchFilter} setSearchFilter={(e) => setSearchFilter(e)} />
           <Sidebar

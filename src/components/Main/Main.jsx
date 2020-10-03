@@ -18,7 +18,7 @@ import useStyles from "./Main.styles";
 function Main() {
   const location = useLocation();
   const dispatch = useDispatch();
-  const activeRoute = location.pathname.substring(1);
+  const activeRoute = location.pathname.substring(15);
 
   const [requiredBays, setRequiredBays] = useState(undefined);
 
@@ -65,7 +65,9 @@ function Main() {
             <Typography gutterBottom variant="body1">
               Number of required cargo bays: <strong> {requiredBays || "0"} </strong>
             </Typography>
-            <Typography gutterBottom variant="body1">Cargo boxes</Typography>
+            <Typography gutterBottom variant="body1">
+              Cargo boxes
+            </Typography>
             <TextField
               // dispatch the modified active company to redux
               onChange={(e) => dispatch(modifyBoxes(e.target.value))}

@@ -18,7 +18,6 @@ import { setIsOpen, setShouldFetch, saveShipmentData, getIsSidebarOpen } from ".
 import useStyles from "./Header.styles";
 
 function Header({ searchFilter, setSearchFilter }) {
-  
   const isSidebarOpen = useSelector(getIsSidebarOpen);
   const [alertOpen, setAlertOpen] = React.useState(false);
 

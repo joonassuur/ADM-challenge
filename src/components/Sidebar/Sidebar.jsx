@@ -8,7 +8,6 @@ import { setIsOpen, getIsSidebarOpen } from "../../redux/Index";
 import useStyles from "./Sidebar.styles";
 
 function Sidebar({ shipmentData }) {
-  
   const isSidebarOpen = useSelector(getIsSidebarOpen);
   const classes = useStyles(isSidebarOpen);
   const dispatch = useDispatch();
@@ -20,7 +19,7 @@ function Sidebar({ shipmentData }) {
       <List>
         {/* displays the list of companies on the sidebar */}
         {shipmentData.map(({ id, name }) => (
-          <ListItem component={Link} button key={id} to={`/${name}`}>
+          <ListItem component={Link} button key={id} to={`/ADM-challenge/${name}`}>
             <ListItemText primary={name} />
           </ListItem>
         ))}
