@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, Route, Switch } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
 import { TextField, CircularProgress, Typography, Link } from "@material-ui/core";
 
@@ -53,36 +53,40 @@ function Main() {
   }, [selectedCompany]);
 
   return (
-    <main className={classes.main}>
-      <div className={classes.toolbar} />
-      {!shouldFetch ? (
-        <>
-          <Typography variant="h4">{selectedCompany?.name}</Typography>
-          <Link variant="body1" href={`mailto:${selectedCompany?.email}`}>
-            {selectedCompany?.email}
-          </Link>
-          <div className={classes.details}>
-            <Typography gutterBottom variant="body1">
-              Number of required cargo bays: <strong> {requiredBays || "0"} </strong>
-            </Typography>
-            <Typography gutterBottom variant="body1">
-              Cargo boxes
-            </Typography>
-            <TextField
-              // dispatch the modified active company to redux
-              onChange={(e) => dispatch(modifyBoxes(e.target.value))}
-              className={classes.input}
-              value={selectedCompany?.boxes || ""}
-            />
-          </div>
-        </>
-      ) : (
-        // if fetching data, display spinner
-        <div className={classes.spinner}>
-          <CircularProgress />
-        </div>
-      )}
-    </main>
+    <Switch>
+      <Route exact path={`/ADM-challenge/${selectedCompany.name}`}>
+        <main className={classes.main}>
+          <div className={classes.toolbar} />
+          {!shouldFetch ? (
+            <>
+              <Typography variant="h4">{selectedCompany?.name}</Typography>
+              <Link variant="body1" href={`mailto:${selectedCompany?.email}`}>
+                {selectedCompany?.email}
+              </Link>
+              <div className={classes.details}>
+                <Typography gutterBottom variant="body1">
+                  Number of required cargo bays: <strong> {requiredBays || "0"} </strong>
+                </Typography>
+                <Typography gutterBottom variant="body1">
+                  Cargo boxes
+                </Typography>
+                <TextField
+                  // dispatch the modified active company to redux
+                  onChange={(e) => dispatch(modifyBoxes(e.target.value))}
+                  className={classes.input}
+                  value={selectedCompany?.boxes || ""}
+                />
+              </div>
+            </>
+          ) : (
+            // if fetching data, display spinner
+            <div className={classes.spinner}>
+              <CircularProgress />
+            </div>
+          )}
+        </main>
+      </Route>
+    </Switch>
   );
 }
 export default Main;

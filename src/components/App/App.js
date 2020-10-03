@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
@@ -45,21 +45,17 @@ function App() {
   }, [dispatch, shipmentData, shouldFetch]);
 
   return shipmentData ? (
-    <Switch>
-      <Route path="/ADM-challenge">
-        <div className={classes.app}>
-          <Header searchFilter={searchFilter} setSearchFilter={(e) => setSearchFilter(e)} />
-          <Sidebar
-            shipmentData={
-              searchFilter
-                ? shipmentData?.filter((text) => text?.name?.toLowerCase().includes(searchFilter))
-                : shipmentData
-            }
-          />
-          <Main shipmentData={shipmentData} />
-        </div>
-      </Route>
-    </Switch>
+      <div className={classes.app}>
+        <Header searchFilter={searchFilter} setSearchFilter={(e) => setSearchFilter(e)} />
+        <Sidebar
+          shipmentData={
+            searchFilter
+              ? shipmentData?.filter((text) => text?.name?.toLowerCase().includes(searchFilter))
+              : shipmentData
+          }
+        />
+        <Main shipmentData={shipmentData} />
+      </div>
   ) : null;
 }
 
