@@ -1,11 +1,9 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getIsSidebarOpen } from "../../redux/Selectors";
 import { useTheme } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
 
-import { setIsOpen, setShouldFetch, saveShipmentData } from "../../redux/AppActions";
-
+import { setIsOpen, setShouldFetch, saveShipmentData, getIsSidebarOpen } from "../../redux/Index";
 import { AppBar, Toolbar, IconButton, Typography, Button, InputBase } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 

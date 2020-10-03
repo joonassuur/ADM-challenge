@@ -5,12 +5,13 @@ import { useTheme } from "@material-ui/core/styles";
 
 import { TextField, CircularProgress } from "@material-ui/core";
 import {
+  setSelectedCompany,
+  modifyBoxes,
   getIsSidebarOpen,
   getShipmentData,
   getSelectedCompany,
   getShouldFetch,
-} from "../../redux/Selectors";
-import { setSelectedCompany, modifyBoxes } from "../../redux/AppActions";
+} from "../../redux/Index";
 
 import useStyles from "./Main.styles";
 

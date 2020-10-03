@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getShipmentData, getShouldFetch } from "../../redux/Selectors";
-import { setShipmentData, setShouldFetch } from "../../redux/AppActions";
+import {
+  setShipmentData,
+  setShouldFetch,
+  getShipmentData,
+  getShouldFetch,
+} from "../../redux/Index";
 
 import { Main, Header, Sidebar, ShipmentsAPI } from "../Index";
 import useStyles from "./App.styles";

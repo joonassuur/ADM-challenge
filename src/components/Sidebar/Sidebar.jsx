@@ -1,7 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getIsSidebarOpen } from "../../redux/Selectors";
-import { setIsOpen } from "../../redux/AppActions";
+import { setIsOpen, getIsSidebarOpen } from "../../redux/Index";
 
 import { Drawer, Divider, List, ListItem, ListItemText, Hidden } from "@material-ui/core";
 import { Link } from "react-router-dom";
