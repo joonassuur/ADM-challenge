@@ -1,7 +1,7 @@
 import _ from "lodash";
 
 const INITIAL_STATE = {
-  isSidebarOpen: true,
+  isSidebarOpen: false,
   shipmentData: undefined,
   selectedCompany: undefined,
   shouldFetch: true,

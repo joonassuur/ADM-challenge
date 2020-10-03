@@ -3,20 +3,25 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
+import { ThemeProvider } from "@material-ui/styles";
 
 import { store, persistor } from "./redux/ConfigureStore";
 import "./index.css";
+import theme from "./theme";
+
 import App from "./components/App/App";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <Router>
-        <React.StrictMode>
-          <App />
-        </React.StrictMode>
-      </Router>
+      <ThemeProvider theme={theme}>
+        <Router>
+          <React.StrictMode>
+            <App />
+          </React.StrictMode>
+        </Router>
+      </ThemeProvider>
     </PersistGate>
   </Provider>,
   document.getElementById("root"),

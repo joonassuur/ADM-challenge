@@ -1,13 +1,19 @@
-import { makeStyles, createStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 
-export default makeStyles(({isOpen}) => ({
-    main: {
-        display: "inline-block",
-        textAlign: "left",
-        marginTop:"100px",
-        marginLeft: (isOpen)=>isOpen ? "280px" : "40px"
+export default makeStyles((theme) => ({
+  main: {
+    flexGrow: "1",
+    textAlign: "left",
+    marginTop: "100px",
+    marginLeft: "30px",
+    [theme.breakpoints.up("sm")]: {
+      flexShrink: 0,
     },
-    input: {
-        width: "300px"
-    }
+  },
+  spinner: {
+    textAlign: "center",
+  },
+  input: {
+    width: "250px",
+  },
 }));

@@ -3,7 +3,6 @@ import { Switch, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getShipmentData, getShouldFetch } from "../../redux/Selectors";
 import { setShipmentData, setShouldFetch } from "../../redux/AppActions";
-import { CircularProgress } from "@material-ui/core";
 
 import { Main, Header, Sidebar, ShipmentsAPI } from "../Index";
 import useStyles from "./App.styles";
@@ -27,7 +26,7 @@ function App() {
         data.sort((a, b) => {
           const textA = a.name.toUpperCase();
           const textB = b.name.toUpperCase();
-        
+
           return textA.localeCompare(textB);
         });
 
@@ -45,7 +44,6 @@ function App() {
       <Route>
         <div className={classes.app}>
           <Header searchFilter={searchFilter} setSearchFilter={(e) => setSearchFilter(e)} />
-          <Main shipmentData={shipmentData} />
           <Sidebar
             shipmentData={
               searchFilter
@@ -53,12 +51,11 @@ function App() {
                 : shipmentData
             }
           />
+          <Main shipmentData={shipmentData} />
         </div>
       </Route>
     </Switch>
-  ) : (
-    <CircularProgress />
-  );
+  ) : null;
 }
 
 export default App;

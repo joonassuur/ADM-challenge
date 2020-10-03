@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
+import { useTheme } from "@material-ui/core/styles";
 
-import { TextField } from "@material-ui/core";
+import { TextField, CircularProgress } from "@material-ui/core";
 import {
   getIsSidebarOpen,
   getShipmentData,
@@ -25,7 +26,8 @@ function Main() {
   const isSidebarOpen = useSelector(getIsSidebarOpen);
   const selectedCompany = useSelector(getSelectedCompany);
 
-  const classes = useStyles(isSidebarOpen);
+  const theme = useTheme();
+  const classes = useStyles(theme, isSidebarOpen);
 
   useEffect(() => {
     if (shipmentData) {
@@ -50,18 +52,30 @@ function Main() {
   }, [selectedCompany]);
 
   return (
-    <div className={classes.main}>
-      <p>{selectedCompany?.name}</p>
-      <a href={`mailto:${selectedCompany?.email}`}>{selectedCompany?.email}</a>
-      <p>{`Number of required cargo bays: ${requiredBays || "0"}`}</p>
-      <p>Cargo boxes</p>
-      <TextField
-        // dispatch the modified active company to redux
-        onChange={(e) => dispatch(modifyBoxes(e.target.value))}
-        className={classes.input}
-        value={selectedCompany?.boxes || ""}
-      />
-    </div>
+    <main className={classes.main}>
+      {!shouldFetch ? (
+        <>
+          <h3>{selectedCompany?.name}</h3>
+          <a href={`mailto:${selectedCompany?.email}`}>{selectedCompany?.email}</a>
+          <p>
+            Number of required cargo bays:
+            <strong> {requiredBays || "0"} </strong>
+          </p>
+          <p>Cargo boxes</p>
+          <TextField
+            // dispatch the modified active company to redux
+            onChange={(e) => dispatch(modifyBoxes(e.target.value))}
+            className={classes.input}
+            value={selectedCompany?.boxes || ""}
+          />
+        </>
+      ) : (
+        // if fetching data, display spinner
+        <div className={classes.spinner}>
+          <CircularProgress />
+        </div>
+      )}
+    </main>
   );
 }
 export default Main;

@@ -1,7 +1,7 @@
-import { makeStyles, createStyles } from '@material-ui/core/styles';
+import { makeStyles } from "@material-ui/core/styles";
 
-export default makeStyles((theme) => ({
-    app: {
-        display:"flex",
-    }
+export default makeStyles(() => ({
+  app: {
+    display: "flex",
+  },
 }));

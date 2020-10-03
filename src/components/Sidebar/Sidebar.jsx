@@ -3,9 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getIsSidebarOpen } from "../../redux/Selectors";
 import { setIsOpen } from "../../redux/AppActions";
 
-import { Drawer, Divider, List, ListItem, IconButton, ListItemText } from "@material-ui/core";
+import { Drawer, Divider, List, ListItem, ListItemText, Hidden } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import useStyles from "./Sidebar.styles";
 
 function Sidebar({ shipmentData }) {
@@ -13,38 +12,53 @@ function Sidebar({ shipmentData }) {
   const classes = useStyles(isSidebarOpen);
   const dispatch = useDispatch();
 
-  return shipmentData ? (
-    <Drawer
-      variant="persistent"
-      anchor="left"
-      open={isSidebarOpen}
-      className={classes.sidebar}
-      classes={{
-        paper: classes.drawerPaper,
-      }}
-    >
-      <div>
-        <IconButton
-          onClick={() => {
-            // handle whether sidebar is open or closed
-            dispatch(setIsOpen(!isSidebarOpen));
-          }}
-        >
-          <ChevronLeftIcon />
-        </IconButton>
-      </div>
+  const drawer = () => (
+    <div>
+      <div className={classes.toolbar} />
       <Divider />
       <List>
         {/* displays the list of companies on the sidebar */}
         {shipmentData.map(({ id, name }) => (
-          <Link key={id} to={`/${name}`}>
-            <ListItem button>
-              <ListItemText primary={name} />
-            </ListItem>
-          </Link>
+          <ListItem component={Link} button key={id} to={`/${name}`}>
+            <ListItemText primary={name} />
+          </ListItem>
         ))}
       </List>
-    </Drawer>
+    </div>
+  );
+
+  return shipmentData ? (
+    <nav className={classes.drawer} aria-label="mailbox folders">
+      <Hidden smUp implementation="css">
+        {/* sidebar for mobile */}
+        <Drawer
+          variant="temporary"
+          anchor={"left"}
+          open={isSidebarOpen}
+          onClose={() => dispatch(setIsOpen(!isSidebarOpen))}
+          classes={{
+            paper: classes.drawerPaper,
+          }}
+          ModalProps={{
+            keepMounted: true,
+          }}
+        >
+          {drawer()}
+        </Drawer>
+      </Hidden>
+      {/* sidebar for desktop */}
+      <Hidden xsDown implementation="css">
+        <Drawer
+          classes={{
+            paper: classes.drawerPaper,
+          }}
+          variant="permanent"
+          open
+        >
+          {drawer()}
+        </Drawer>
+      </Hidden>
+    </nav>
   ) : null;
 }
 export default Sidebar;
