@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/ADM-challenge/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/ADM-challenge/static/js/main.0b527f4c.chunk.js",
+    "main.js.map": "/ADM-challenge/static/js/main.0b527f4c.chunk.js.map",
+    "runtime-main.js": "/ADM-challenge/static/js/runtime-main.a1d8c7d4.js",
+    "runtime-main.js.map": "/ADM-challenge/static/js/runtime-main.a1d8c7d4.js.map",
+    "static/js/2.c891df10.chunk.js": "/ADM-challenge/static/js/2.c891df10.chunk.js",
+    "static/js/2.c891df10.chunk.js.map": "/ADM-challenge/static/js/2.c891df10.chunk.js.map",
+    "index.html": "/ADM-challenge/index.html",
+    "precache-manifest.871d676861dbdb80df7fbc8ea506c4ea.js": "/ADM-challenge/precache-manifest.871d676861dbdb80df7fbc8ea506c4ea.js",
+    "service-worker.js": "/ADM-challenge/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/ADM-challenge/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.c891df10.chunk.js.LICENSE.txt": "/ADM-challenge/static/js/2.c891df10.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a1d8c7d4.js",
+    "static/js/2.c891df10.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.0b527f4c.chunk.js"
+  ]
+}
