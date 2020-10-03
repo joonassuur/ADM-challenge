@@ -25,15 +25,12 @@ function App() {
 
         // sort the list alphabetically
         data.sort((a, b) => {
-          if (a.name < b.name) {
-            return -1;
-          }
-          if (a.name > b.name) {
-            return 1;
-          }
-          return 0;
-        });
+          const textA = a.name.toUpperCase();
+          const textB = b.name.toUpperCase();
         
+          return textA.localeCompare(textB);
+        });
+
         if (data) {
           dispatch(setShouldFetch(false));
           // once the data is fetched, dispatch it to redux
