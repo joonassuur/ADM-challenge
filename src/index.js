@@ -17,9 +17,7 @@ ReactDOM.render(
     <PersistGate loading={null} persistor={persistor}>
       <ThemeProvider theme={theme}>
         <Router>
-          <React.StrictMode>
-            <App />
-          </React.StrictMode>
+          <App />
         </Router>
       </ThemeProvider>
     </PersistGate>

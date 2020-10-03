@@ -54,7 +54,7 @@ function Main() {
 
   return (
     <Switch>
-      <Route exact path={`/ADM-challenge/${selectedCompany.name}`}>
+      <Route exact path={`/ADM-challenge/${selectedCompany?.name}`}>
         <main className={classes.main}>
           <div className={classes.toolbar} />
           {!shouldFetch ? (
