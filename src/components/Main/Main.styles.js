@@ -4,7 +4,6 @@ export default makeStyles((theme) => ({
   main: {
     flexGrow: "1",
     textAlign: "left",
-    marginTop: "100px",
     marginLeft: "30px",
     [theme.breakpoints.up("sm")]: {
       flexShrink: 0,
@@ -16,4 +15,6 @@ export default makeStyles((theme) => ({
   input: {
     width: "250px",
   },
+  // necessary for content to be below app bar
+  toolbar: theme.mixins.toolbar,
 }));

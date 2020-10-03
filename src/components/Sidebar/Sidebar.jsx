@@ -1,12 +1,14 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setIsOpen, getIsSidebarOpen } from "../../redux/Index";
-
 import { Drawer, Divider, List, ListItem, ListItemText, Hidden } from "@material-ui/core";
 import { Link } from "react-router-dom";
+
+import { setIsOpen, getIsSidebarOpen } from "../../redux/Index";
+
 import useStyles from "./Sidebar.styles";
 
 function Sidebar({ shipmentData }) {
+  
   const isSidebarOpen = useSelector(getIsSidebarOpen);
   const classes = useStyles(isSidebarOpen);
   const dispatch = useDispatch();

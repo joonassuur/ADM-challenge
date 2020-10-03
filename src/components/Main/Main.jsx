@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { useTheme } from "@material-ui/core/styles";
-
 import { TextField, CircularProgress } from "@material-ui/core";
+
 import {
   setSelectedCompany,
   modifyBoxes,
@@ -54,6 +54,7 @@ function Main() {
 
   return (
     <main className={classes.main}>
+      <div className={classes.toolbar} />
       {!shouldFetch ? (
         <>
           <h3>{selectedCompany?.name}</h3>

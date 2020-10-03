@@ -1,12 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useTheme } from "@material-ui/core/styles";
-import SearchIcon from "@material-ui/icons/Search";
+import { AppBar, Toolbar, IconButton, Typography, Button, InputBase } from "@material-ui/core";
+import {Search, Menu} from "@material-ui/icons";
 
 import { setIsOpen, setShouldFetch, saveShipmentData, getIsSidebarOpen } from "../../redux/Index";
-import { AppBar, Toolbar, IconButton, Typography, Button, InputBase } from "@material-ui/core";
-import MenuIcon from "@material-ui/icons/Menu";
-
 import useStyles from "./Header.styles";
 
 function Header({ searchFilter, setSearchFilter }) {
@@ -30,7 +28,7 @@ function Header({ searchFilter, setSearchFilter }) {
             color="inherit"
             aria-label="open drawer"
           >
-            <MenuIcon />
+            <Menu />
           </IconButton>
           <Typography className="headerTitle" variant="h6" noWrap>
             Cargo planner
@@ -40,7 +38,7 @@ function Header({ searchFilter, setSearchFilter }) {
         <div className="rightContainer">
           <div className={classes.search}>
             <div className={classes.searchIcon}>
-              <SearchIcon />
+              <Search />
             </div>
             <InputBase
               placeholder="Search…"
