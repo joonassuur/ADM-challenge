@@ -35,6 +35,7 @@ function Header({ searchFilter, setSearchFilter }) {
     <AppBar position="fixed" className={classes.header}>
       <Toolbar className={classes.toolbar}>
         <div className="leftContainer">
+          {/* menu icon for mobile view */}
           <IconButton
             onClick={() => {
               // handle whether sidebar is open or closed
@@ -49,9 +50,9 @@ function Header({ searchFilter, setSearchFilter }) {
           <Typography className="headerTitle" variant="h6" noWrap>
             Cargo planner
           </Typography>
-          {/* search bar */}
         </div>
         <div className="rightContainer">
+          {/* search bar */}
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <Search />

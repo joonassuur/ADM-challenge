@@ -43,18 +43,18 @@ function App() {
   }, [dispatch, shipmentData, shouldFetch]);
 
   return shipmentData ? (
-      <div className={classes.app}>
-        <Header searchFilter={searchFilter} setSearchFilter={(e) => setSearchFilter(e)} />
-        <Sidebar
-          shipmentData={
-            // handle search filtering
-            searchFilter
-              ? shipmentData?.filter((text) => text?.name?.toLowerCase().includes(searchFilter))
-              : shipmentData
-          }
-        />
-        <Main shipmentData={shipmentData} />
-      </div>
+    <div className={classes.app}>
+      <Header searchFilter={searchFilter} setSearchFilter={(e) => setSearchFilter(e)} />
+      <Sidebar
+        shipmentData={
+          // handle search filtering
+          searchFilter
+            ? shipmentData?.filter((text) => text?.name?.toLowerCase().includes(searchFilter))
+            : shipmentData
+        }
+      />
+      <Main shipmentData={shipmentData} />
+    </div>
   ) : null;
 }
 

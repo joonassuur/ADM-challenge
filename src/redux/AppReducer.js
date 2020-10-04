@@ -10,6 +10,7 @@ const INITIAL_STATE = {
 function AppReducer(state = INITIAL_STATE, { payload, type }) {
   switch (type) {
     case "SET_IS_OPEN":
+      // handle sidebar open/closed for mobile view
       return {
         ...state,
         isSidebarOpen: payload,
