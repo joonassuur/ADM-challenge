@@ -16,7 +16,7 @@ ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <ThemeProvider theme={theme}>
-        <Router>
+        <Router basename={`${process.env.PUBLIC_URL}/`}>
           <App />
         </Router>
       </ThemeProvider>

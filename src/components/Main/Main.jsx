@@ -18,7 +18,7 @@ import useStyles from "./Main.styles";
 function Main() {
   const location = useLocation();
   const dispatch = useDispatch();
-  const activeRoute = location.pathname.substring(15);
+  const activeRoute = location.pathname.substring(1);
 
   const [requiredBays, setRequiredBays] = useState(undefined);
 
@@ -29,6 +29,7 @@ function Main() {
 
   const theme = useTheme();
   const classes = useStyles(theme, isSidebarOpen);
+
 
   useEffect(() => {
     if (shipmentData) {
@@ -54,7 +55,7 @@ function Main() {
 
   return (
     <Switch>
-      <Route exact path={`/ADM-challenge/${selectedCompany?.name}`}>
+      <Route exact path={`/${selectedCompany?.name}`}>
         <main className={classes.main}>
           <div className={classes.toolbar} />
           {!shouldFetch ? (

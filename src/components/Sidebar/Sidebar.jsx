@@ -19,7 +19,7 @@ function Sidebar({ shipmentData }) {
       <List>
         {/* displays the list of companies on the sidebar */}
         {shipmentData.map(({ id, name }) => (
-          <ListItem component={Link} button key={id} to={`/ADM-challenge/${name}`}>
+          <ListItem component={Link} button key={id} to={`/${name}`}>
             <ListItemText primary={name} />
           </ListItem>
         ))}
