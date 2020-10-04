@@ -17,7 +17,6 @@ function App() {
   const shipmentData = useSelector(getShipmentData);
   const shouldFetch = useSelector(getShouldFetch);
 
-  // handle search filtering
   const [searchFilter, setSearchFilter] = useState(undefined);
 
   useEffect(() => {
@@ -26,7 +25,7 @@ function App() {
         // fetch the data from shipments.json
         const { data } = await ShipmentsAPI.getShipments();
 
-        // sort the list alphabetically
+        // sort the company list alphabetically
         data.sort((a, b) => {
           const textA = a.name.toUpperCase();
           const textB = b.name.toUpperCase();
@@ -48,6 +47,7 @@ function App() {
         <Header searchFilter={searchFilter} setSearchFilter={(e) => setSearchFilter(e)} />
         <Sidebar
           shipmentData={
+            // handle search filtering
             searchFilter
               ? shipmentData?.filter((text) => text?.name?.toLowerCase().includes(searchFilter))
               : shipmentData

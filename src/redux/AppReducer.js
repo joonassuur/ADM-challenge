@@ -34,7 +34,7 @@ function AppReducer(state = INITIAL_STATE, { payload, type }) {
       // clone shipment data (shipments.json) for editing
       const shipmentData = _.clone(state.shipmentData);
       // find the index of currently selected company from the list of all companies
-      const index = shipmentData.findIndex(({ id }) => id === state.selectedCompany.id);
+      const index = shipmentData.findIndex(({ id }) => id === state?.selectedCompany?.id);
       // swap the modified selected company in the list of all companies
       shipmentData[index] = state.selectedCompany;
 

@@ -1,6 +1,5 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useTheme } from "@material-ui/core/styles";
 import {
   AppBar,
   Toolbar,
@@ -10,9 +9,9 @@ import {
   InputBase,
   Snackbar,
 } from "@material-ui/core";
-import MuiAlert from "@material-ui/lab/Alert";
-
+import { Alert } from "@material-ui/lab";
 import { Search, Menu } from "@material-ui/icons";
+import { useTheme } from "@material-ui/core/styles";
 
 import { setIsOpen, setShouldFetch, saveShipmentData, getIsSidebarOpen } from "../../redux/Index";
 import useStyles from "./Header.styles";
@@ -31,10 +30,6 @@ function Header({ searchFilter, setSearchFilter }) {
     }
     setAlertOpen(false);
   };
-
-  function Alert(props) {
-    return <MuiAlert elevation={6} variant="filled" {...props} />;
-  }
 
   return (
     <AppBar position="fixed" className={classes.header}>
@@ -95,7 +90,7 @@ function Header({ searchFilter, setSearchFilter }) {
       </Toolbar>
       {/* success message */}
       <Snackbar open={alertOpen} autoHideDuration={3000} onClose={handleAlertClose}>
-        <Alert onClose={handleAlertClose} severity="success">
+        <Alert elevation={6} variant="filled" onClose={handleAlertClose} severity="success">
           Saved!
         </Alert>
       </Snackbar>
