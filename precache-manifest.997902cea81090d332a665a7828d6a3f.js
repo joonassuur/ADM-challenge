@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "20ce4096128477c2c9e04f005dd6cb3a",
+    "revision": "88a88f779a9ea8cf0845e58b051f53e7",
     "url": "/ADM-challenge/index.html"
   },
   {
-    "revision": "e621d5a5f1ff60e0508d",
+    "revision": "cdd0dbef6d7d9fdf266f",
     "url": "/ADM-challenge/static/css/main.5ecd60fb.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ADM-challenge/static/js/2.5e3932fd.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "e621d5a5f1ff60e0508d",
-    "url": "/ADM-challenge/static/js/main.e0779fda.chunk.js"
+    "revision": "cdd0dbef6d7d9fdf266f",
+    "url": "/ADM-challenge/static/js/main.7a1ab3a5.chunk.js"
   },
   {
     "revision": "b35377adb6825b746e4a",

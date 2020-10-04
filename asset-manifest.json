@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ADM-challenge/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/ADM-challenge/static/js/main.e0779fda.chunk.js",
-    "main.js.map": "/ADM-challenge/static/js/main.e0779fda.chunk.js.map",
+    "main.js": "/ADM-challenge/static/js/main.7a1ab3a5.chunk.js",
+    "main.js.map": "/ADM-challenge/static/js/main.7a1ab3a5.chunk.js.map",
     "runtime-main.js": "/ADM-challenge/static/js/runtime-main.a1d8c7d4.js",
     "runtime-main.js.map": "/ADM-challenge/static/js/runtime-main.a1d8c7d4.js.map",
     "static/js/2.5e3932fd.chunk.js": "/ADM-challenge/static/js/2.5e3932fd.chunk.js",
     "static/js/2.5e3932fd.chunk.js.map": "/ADM-challenge/static/js/2.5e3932fd.chunk.js.map",
     "index.html": "/ADM-challenge/index.html",
-    "precache-manifest.36efa529610a93c4e929e83681f8ae96.js": "/ADM-challenge/precache-manifest.36efa529610a93c4e929e83681f8ae96.js",
+    "precache-manifest.997902cea81090d332a665a7828d6a3f.js": "/ADM-challenge/precache-manifest.997902cea81090d332a665a7828d6a3f.js",
     "service-worker.js": "/ADM-challenge/service-worker.js",
     "static/css/main.5ecd60fb.chunk.css.map": "/ADM-challenge/static/css/main.5ecd60fb.chunk.css.map",
     "static/js/2.5e3932fd.chunk.js.LICENSE.txt": "/ADM-challenge/static/js/2.5e3932fd.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.a1d8c7d4.js",
     "static/js/2.5e3932fd.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.e0779fda.chunk.js"
+    "static/js/main.7a1ab3a5.chunk.js"
   ]
 }
