@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
 import { ThemeProvider } from "@material-ui/styles";
 
@@ -16,7 +16,7 @@ ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <ThemeProvider theme={theme}>
-        <Router basename={`${process.env.PUBLIC_URL}/`}>
+        <Router hashType={"slash"} basename={`${process.env.PUBLIC_URL}`}>
           <App />
         </Router>
       </ThemeProvider>
