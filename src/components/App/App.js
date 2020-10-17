@@ -8,7 +8,7 @@ import {
   getShouldFetch,
 } from "../../redux/Index";
 
-import { Main, Header, Sidebar, ShipmentsAPI } from "../Index";
+import { Main, Header, Sidebar, Shipments } from "../Index";
 import useStyles from "./App.styles";
 
 function App() {
@@ -22,21 +22,19 @@ function App() {
   useEffect(() => {
     (async () => {
       if (shouldFetch) {
-        // fetch the data from shipments.json
-        const { data } = await ShipmentsAPI.getShipments();
 
         // sort the company list alphabetically
-        data.sort((a, b) => {
+        Shipments.sort((a, b) => {
           const textA = a.name.toUpperCase();
           const textB = b.name.toUpperCase();
 
           return textA.localeCompare(textB);
         });
 
-        if (data) {
+        if (Shipments) {
           dispatch(setShouldFetch(false));
           // once the data is fetched, dispatch it to redux
-          dispatch(setShipmentData(data));
+          dispatch(setShipmentData(Shipments));
         }
       }
     })();
